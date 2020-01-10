@@ -1,0 +1,22 @@
+ private void updateTable(){
+        
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+            String databaseURL = "jdbc:mysql://localhost/persewaan";
+            Connection con = DriverManager.getConnection(databaseURL, "root", "");
+            Statement stat = con.createStatement();    
+            String selectQuery="select IdTransaksi from transaksi";
+            ResultSet rs=stat.executeQuery(selectQuery);
+            while(rs.next())
+            {
+                jComboBox1.addItem(Integer.toString(rs.getInt("IdTransaksi")));
+                
+            }
+                    
+        
+        }
+        catch(Exception e)
+        {
+            System.out.println(e);
+        }
+    }
